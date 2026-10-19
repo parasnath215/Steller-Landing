@@ -1,0 +1,12 @@
+# Temporary Python scripts & artifacts
+*.py
+*.txt
+*.json
+*.ps1
+!assets/**
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
