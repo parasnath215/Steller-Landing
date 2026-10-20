@@ -1,13 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60" fill="none">
   <defs>
     <linearGradient id="stellerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2D1E85"/>
-      <stop offset="50%" stop-color="#5533DE"/>
-      <stop offset="100%" stop-color="#6D4AFF"/>
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#0EA5E9"/>
     </linearGradient>
     <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6D4AFF" stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="#A78BFA" stop-opacity="0.2"/>
+      <stop offset="0%" stop-color="#0EA5E9" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.2"/>
     </linearGradient>
     <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="3" result="blur"/>
@@ -18,18 +17,18 @@
   <!-- Emblem -->
   <g transform="translate(6, 6)">
     <!-- Ambient glow circle -->
-    <circle cx="24" cy="24" r="22" fill="#F0EEFB" />
+    <circle cx="24" cy="24" r="22" fill="#E0F2FE" />
     
     <!-- Outer geometric shape -->
     <rect x="7" y="7" width="34" height="34" rx="10" transform="rotate(45 24 24)" fill="url(#stellerGrad)" />
     
     <!-- Inner faceted star accents -->
-    <path d="M24 11 L27.5 20.5 L37 24 L27.5 27.5 L24 37 L20.5 27.5 L11 24 L20.5 20.5 Z" fill="#FFFFFF" opacity="0.95"/>
+    <path d="M24 11 L27.5 20.5 L37 24 L27.5 27.5 L24 37 L20.5 27.5 L11 24 L20.5 20.5 Z" fill="#111827" opacity="0.95"/>
     <circle cx="24" cy="24" r="4.5" fill="url(#stellerGrad)"/>
-    <circle cx="24" cy="24" r="2" fill="#FFFFFF"/>
+    <circle cx="24" cy="24" r="2" fill="#111827"/>
     
     <!-- Micro orbital spark -->
-    <circle cx="34" cy="14" r="2.5" fill="#6D4AFF" />
+    <circle cx="34" cy="14" r="2.5" fill="#0EA5E9" />
   </g>
 
   <!-- Wordmark -->
@@ -41,13 +40,13 @@
 
   <!-- .in Badge -->
   <g transform="translate(162, 18)">
-    <rect x="0" y="0" width="36" height="20" rx="6" fill="#F0EEFB" stroke="#E0DBF9" stroke-width="1.2"/>
-    <text x="18" y="14" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="800" font-size="11" fill="#2D1E85" text-anchor="middle" letter-spacing="-0.02em">.in</text>
+    <rect x="0" y="0" width="36" height="20" rx="6" fill="#E0F2FE" stroke="#06B6D4" stroke-opacity="0.4" stroke-width="1.2"/>
+    <text x="18" y="14" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="800" font-size="11" fill="#0284C7" text-anchor="middle" letter-spacing="-0.02em">.in</text>
   </g>
 
   <!-- Subtitle -->
   <g transform="translate(64, 49)">
-    <text font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="600" font-size="7.5" letter-spacing="0.18em" fill="#6B7280" text-transform="uppercase">
+    <text font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="600" font-size="7.5" letter-spacing="0.18em" fill="#4B5563" text-transform="uppercase">
       CUSTOM SOFTWARE
     </text>
   </g>
