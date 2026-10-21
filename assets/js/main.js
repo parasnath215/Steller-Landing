@@ -364,7 +364,7 @@
   const waPopup = document.querySelector("[data-wa-popup]");
   const waCloseBtn = waPopup ? waPopup.querySelector("[data-wa-popup-close]") : null;
   const waViews = waPopup ? waPopup.querySelectorAll("[data-wa-view]") : [];
-  const WA_CAREER_URL = "mailto:careers@stellarweb.in?subject=Career%20Application%20at%20STELLAR";
+  const WA_CAREER_URL = "mailto:support@stellarweb.in?subject=Career%20Application%20at%20STELLAR";
   const WA_SERVICE_URL = "https://wa.me/919014757379?text=Hello%20STELLAR%20team%2C%20I%20am%20interested%20in%20discussing%20a%20project.";
 
   function waShowView(name) {
