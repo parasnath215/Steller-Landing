@@ -6,6 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#06B6D4" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17868096089"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-17868096089');
+    </script>
+
+    <!-- Event snippet for WhatsApp Click – Clinic conversion page
+    In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17868096089/P-KYCP-N4PEbENmElshC',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
+
+    <!-- Event snippet for Submit lead form conversion page -->
+    <script>
+      gtag('event', 'conversion', {'send_to': 'AW-17868096089/xkDpCM3vqO4bENmElshC'});
+    </script>
+
     <title>STELLAR | Websites & Software that help businesses grow — not just look good</title>
     <meta name="description"
         content="Build mission-critical custom software, ERP, CRM, AI solutions and SaaS platforms with STELLAR. Share your requirements and receive an architecture consultation and preliminary quote within 24 hours." />
@@ -68,7 +100,7 @@
             "logo": "https://stellarweb.in/assets/images/header-logo.png",
             "description": "STELLAR develops custom software applications, enterprise ERP/CRM systems, SaaS products, AI workflows and mobile solutions across India and globally.",
             "areaServed": "India",
-            "email": "support@stellarweb.in",
+            "email": "contact@stellarweb.in",
             "telephone": "+919014757379"
         }
     </script>
@@ -184,7 +216,8 @@
                         <p class="mt-1 text-xs text-[var(--slate)]">Share your business requirements below and our technical team will get in touch to discuss your goals, suggest the optimal solution, and provide a transparent estimate.</p>
                         
                         <div class="mt-5">
-                            <form id="heroQuoteForm" data-quote-form class="space-y-4" novalidate>
+                            <form id="heroQuoteForm" data-quote-form action="send-mail.php" method="POST" class="space-y-4" novalidate>
+                                <input type="hidden" name="form_type" value="Hero Quote Form" />
                                 <input type="text" name="website_url" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;pointer-events:none;" />
                                 
                                 <div class="grid gap-3 sm:grid-cols-2">
@@ -2261,11 +2294,11 @@
                             </a>
                         </div>
                         <div class="reveal reveal-up card-lift flex h-full items-center gap-3 rounded-3xl border border-[var(--fog)] bg-white p-6 shadow-soft" data-delay="0.08">
-                            <a href="mailto:support@stellarweb.in" class="flex items-center gap-3">
+                            <a href="mailto:contact@stellarweb.in" class="flex items-center gap-3">
                                 <span class="grid size-11 shrink-0 place-items-center rounded-2xl bg-[var(--tint-pink)] text-[var(--text-pink)]"><i class="fa-solid fa-envelope text-lg" aria-hidden="true"></i></span>
                                 <span class="flex flex-col">
                                     <span class="text-xs font-semibold uppercase tracking-wider text-[var(--slate)]">Email Us</span>
-                                    <span class="text-base font-bold">support@stellarweb.in</span>
+                                    <span class="text-base font-bold">contact@stellarweb.in</span>
                                 </span>
                             </a>
                         </div>
@@ -2345,7 +2378,7 @@
                         <h3 class="text-sm font-semibold uppercase tracking-wider text-[var(--ink)]">Contact Us</h3>
                         <div class="flex flex-col gap-3">
                             <div class="flex flex-col gap-1.5">
-                                <a href="mailto:support@stellarweb.in" class="text-sm text-[var(--slate)] transition-colors duration-200 hover:text-[var(--text-pink)]">support@stellarweb.in</a>
+                                <a href="mailto:contact@stellarweb.in" class="text-sm text-[var(--slate)] transition-colors duration-200 hover:text-[var(--text-pink)]">contact@stellarweb.in</a>
                             </div>
                             <div class="flex flex-col gap-1.5">
                                 <a href="tel:+919014757379" class="text-sm text-[var(--slate)] transition-colors duration-200 hover:text-[var(--text-pink)]">+91 90147 57379</a>
@@ -2411,7 +2444,8 @@
                 <p class="mt-1 text-sm text-[var(--slate)]">Share your project requirements and STELLAR's lead architects will connect with you within 24 hours.</p>
             </div>
             <div class="mt-5">
-                <form id="popupQuoteForm" data-quote-form class="space-y-4" novalidate>
+                <form id="popupQuoteForm" data-quote-form action="send-mail.php" method="POST" class="space-y-4" novalidate>
+                    <input type="hidden" name="form_type" value="Popup Modal Form" />
                     <input type="text" name="website_url" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;pointer-events:none;" />
                     
                     <div class="grid gap-3 sm:grid-cols-2">
@@ -2516,7 +2550,7 @@
         </a>
 
         <!-- WhatsApp -->
-        <a href="https://wa.me/919876543210?text=Hello%20STELLAR%20team%2C%20I%20am%20interested%20in%20discussing%20a%20custom%20software%20project." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp STELLAR" class="w-14 h-14 rounded-full bg-[#10B981] text-[#111827] flex items-center justify-center shadow-xl hover:-translate-y-1 transition">
+        <a href="https://wa.me/919014757379?text=Hello%20STELLAR%20team%2C%20I%20am%20interested%20in%20discussing%20a%20custom%20software%20project." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp STELLAR" class="w-14 h-14 rounded-full bg-[#10B981] text-[#111827] flex items-center justify-center shadow-xl hover:-translate-y-1 transition">
             <i class="fa-brands fa-whatsapp text-2xl"></i>
         </a>
     </div>
@@ -2527,7 +2561,7 @@
             <i class="fa-solid fa-phone"></i>
             Call Us
         </a>
-        <a href="https://wa.me/919876543210?text=Hello%20STELLAR%20team%2C%20I%20am%20interested%20in%20discussing%20a%20custom%20software%20project." target="_blank" rel="noopener noreferrer" class="w-1/2 bg-[#10B981] text-[#111827] py-3.5 text-center font-semibold text-sm flex items-center justify-center gap-2">
+        <a href="https://wa.me/919014757379?text=Hello%20STELLAR%20team%2C%20I%20am%20interested%20in%20discussing%20a%20custom%20software%20project." target="_blank" rel="noopener noreferrer" class="w-1/2 bg-[#10B981] text-[#111827] py-3.5 text-center font-semibold text-sm flex items-center justify-center gap-2">
             <i class="fa-brands fa-whatsapp text-lg"></i>
             WhatsApp
         </a>

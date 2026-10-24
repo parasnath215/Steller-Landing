@@ -327,16 +327,87 @@
         submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Submitting...';
       }
 
-      // Simulate instantaneous clean asynchronous lead submission
-      setTimeout(() => {
+      function onLeadSuccess() {
+        if (typeof gtag === "function") {
+          gtag("event", "conversion", {
+            send_to: "AW-17868096089/xkDpCM3vqO4bENmElshC"
+          });
+        }
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
         }
         form.reset();
         closeDialog();
-        showToast("Success! Thank you. Steller's lead architect will connect with you within 24 business hours.", false);
-      }, 700);
+        showToast("Success! Thank you. STELLAR's lead architect will connect with you within 24 business hours.", false);
+      }
+
+      function onLeadError(msg) {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
+        showToast(msg || "Could not submit enquiry automatically. Please WhatsApp or call us directly at +91 90147 57379.", true);
+      }
+
+      // Step 1: Submit to PHP backend send-mail.php (delivers directly to contact@stellarweb.in)
+      const formData = new FormData(form);
+
+      fetch("send-mail.php", {
+        method: "POST",
+        body: formData,
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+          "Accept": "application/json"
+        }
+      })
+      .then((res) => {
+        if (!res.ok) throw new Error("Server HTTP " + res.status);
+        return res.json();
+      })
+      .then((data) => {
+        if (data && data.status === "success") {
+          onLeadSuccess();
+        } else {
+          throw new Error(data && data.message ? data.message : "Submission failed");
+        }
+      })
+      .catch((err) => {
+        console.warn("send-mail.php unavailable or failed, switching to direct delivery fallback:", err);
+
+        // Step 2: Fallback to FormSubmit.co API directly sending to contact@stellarweb.in
+        const fallbackData = {
+          name: form.elements["name"] ? form.elements["name"].value : "",
+          email: form.elements["email"] ? form.elements["email"].value : "",
+          phone: form.elements["phone"] ? form.elements["phone"].value : "",
+          message: form.elements["message"] ? form.elements["message"].value : "",
+          form_source: form.elements["form_type"] ? form.elements["form_type"].value : (form.id === "popupQuoteForm" ? "Popup Modal Form" : "Hero Quote Form"),
+          _subject: "New Project Enquiry from STELLAR Website - " + (form.elements["name"] ? form.elements["name"].value : ""),
+          _template: "table",
+          _captcha: "false"
+        };
+
+        fetch("https://formsubmit.co/ajax/contact@stellarweb.in", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(fallbackData)
+        })
+        .then((res) => res.json())
+        .then((resData) => {
+          if (resData && (resData.success === "true" || resData.success === true)) {
+            onLeadSuccess();
+          } else {
+            throw new Error("Fallback failed");
+          }
+        })
+        .catch((fbErr) => {
+          console.error("All lead delivery mechanisms failed:", fbErr);
+          onLeadError("Submission error. Please email contact@stellarweb.in or WhatsApp us directly at +91 90147 57379.");
+        });
+      });
     });
 
     form
@@ -390,6 +461,9 @@
 
   document.querySelectorAll('a[href*="wa.me"]').forEach((link) => {
     link.addEventListener("click", (e) => {
+      if (typeof gtag_report_conversion === "function") {
+        gtag_report_conversion();
+      }
       e.preventDefault();
       waOpenPopup();
     });
@@ -414,6 +488,9 @@
   document.querySelectorAll("[data-wa-service]").forEach((btn) => {
     btn.addEventListener("click", () => {
       waClosePopup();
+      if (typeof gtag_report_conversion === "function") {
+        gtag_report_conversion();
+      }
       window.open(WA_SERVICE_URL, "_blank");
     });
   });
@@ -454,5 +531,25 @@
         loadMoreBtn.style.display = "none";
       }
     });
+  }
+
+  /* ---------- 11. URL check for successful form redirect ---------- */
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("sent") === "1" || urlParams.get("status") === "success") {
+      showToast("Success! Thank you. STELLAR's lead architect will connect with you within 24 business hours.", false);
+      if (typeof gtag === "function") {
+        gtag("event", "conversion", {
+          send_to: "AW-17868096089/xkDpCM3vqO4bENmElshC"
+        });
+      }
+      // Clean URL parameter without reload
+      if (window.history && window.history.replaceState) {
+        const cleanUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, document.title, cleanUrl);
+      }
+    }
+  } catch (e) {
+    // ignore
   }
 })();
