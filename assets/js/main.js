@@ -350,7 +350,7 @@
         showToast(msg || "Could not submit enquiry automatically. Please WhatsApp or call us directly at +91 90147 57379.", true);
       }
 
-      // Step 1: Submit to PHP backend send-mail.php (delivers directly to contact@stellarweb.in)
+      // Step 1: Submit to PHP backend send-mail.php (delivers directly to admin@stellarweb.in)
       const formData = new FormData(form);
 
       fetch("send-mail.php", {
@@ -375,7 +375,7 @@
       .catch((err) => {
         console.warn("send-mail.php unavailable or failed, switching to direct delivery fallback:", err);
 
-        // Step 2: Fallback to FormSubmit.co API directly sending to contact@stellarweb.in
+        // Step 2: Fallback to FormSubmit.co API directly sending to admin@stellarweb.in
         const fallbackData = {
           name: form.elements["name"] ? form.elements["name"].value : "",
           email: form.elements["email"] ? form.elements["email"].value : "",
@@ -387,7 +387,7 @@
           _captcha: "false"
         };
 
-        fetch("https://formsubmit.co/ajax/contact@stellarweb.in", {
+        fetch("https://formsubmit.co/ajax/admin@stellarweb.in", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -405,7 +405,7 @@
         })
         .catch((fbErr) => {
           console.error("All lead delivery mechanisms failed:", fbErr);
-          onLeadError("Submission error. Please email contact@stellarweb.in or WhatsApp us directly at +91 90147 57379.");
+          onLeadError("Submission error. Please email admin@stellarweb.in or WhatsApp us directly at +91 90147 57379.");
         });
       });
     });
@@ -435,7 +435,7 @@
   const waPopup = document.querySelector("[data-wa-popup]");
   const waCloseBtn = waPopup ? waPopup.querySelector("[data-wa-popup-close]") : null;
   const waViews = waPopup ? waPopup.querySelectorAll("[data-wa-view]") : [];
-  const WA_CAREER_URL = "mailto:support@stellarweb.in?subject=Career%20Application%20at%20STELLAR";
+  const WA_CAREER_URL = "mailto:admin@stellarweb.in?subject=Career%20Application%20at%20STELLAR";
   const WA_SERVICE_URL = "https://wa.me/919014757379?text=Hello%20STELLAR%20team%2C%20I%20am%20interested%20in%20discussing%20a%20project.";
 
   function waShowView(name) {

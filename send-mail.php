@@ -1,7 +1,7 @@
 <?php
 /**
  * STELLAR - Lead Contact Form Handler
- * Delivers all website inquiries directly to contact@stellarweb.in
+ * Delivers all website inquiries directly to admin@stellarweb.in
  */
 
 // Set response header
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Target recipient email
-$to = 'contact@stellarweb.in';
+$to = 'admin@stellarweb.in';
 
 // Check for JSON input or standard POST data
 $inputJSON = file_get_contents('php://input');
@@ -170,7 +170,7 @@ $headers[] = 'MIME-Version: 1.0';
 $headers[] = 'Content-Type: text/html; charset=UTF-8';
 $headers[] = 'From: STELLAR Notifications <noreply@stellarweb.in>';
 $headers[] = 'Reply-To: ' . htmlspecialchars($name) . ' <' . $email . '>';
-$headers[] = 'Return-Path: <contact@stellarweb.in>';
+$headers[] = 'Return-Path: <admin@stellarweb.in>';
 $headers[] = 'X-Mailer: PHP/' . phpversion();
 
 // Send email using PHP mail()
@@ -195,7 +195,7 @@ if ($isAjax) {
         http_response_code(500);
         echo json_encode([
             'status' => 'error',
-            'message' => 'Email delivery failed on server. Please reach out to contact@stellarweb.in directly or via WhatsApp.'
+            'message' => 'Email delivery failed on server. Please reach out to admin@stellarweb.in directly or via WhatsApp.'
         ]);
     }
 } else {
